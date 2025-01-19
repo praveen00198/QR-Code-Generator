@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator</title>
+  </head>
+  <style>
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: rgb(250, 250, 250);
+      height: 100%;
+    }
+    .input {
+      background-color: rgb(0, 0, 0);
+      text-align: center;
+      align-items: center;
+      padding: 20px 100px;
+      color: white;
+      position: relative;
+      border-radius: 20px;
+    }
+    p {
+      font-size: 200%;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      height: 2rem;
+      border: 1px solid #202020;
+      border-radius: 10px;
+      text-align: center;
+      margin-bottom: 10px;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+    }
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 2rem;
+      background-color: #fafafa;
+      border-radius: 20px;
+      border: none;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #202020;
+      color: white;
+    }
+    .qr {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .description{
+        padding: 15px;
+        width: 50%;
+        text-align: center;
+        position: relative;
+    }
+    #downloadBtn{
+       border-radius: 10px;
+    }
+    
+  </style>
+  <body>
+    <div class="container">
+      <div class="input">
+        <p>QR Code Generator</p>
+        <input type="text" id="inputText" placeholder="Enter your text" />
+        <button onclick="generate()">Generate QR Code</button>
+      </div>
+      <div class="qr">
+        <div class="img">
+            <img src="" id="imgqr" srcset="">
+        </div>
+        <div class="description">
+          <h3>Here by clicking below download button you can save it.</h3>
+          <button id="downloadBtn" onclick="download()">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="24px"
+              viewBox="0 -960 960 960"
+              width="24px"
+              fill="undefined"
+            >
+              <path
+                d="M480-320 280-520l56-58 104 104v-326h80v326l104-104 56 58-200 200ZM240-160q-33 0-56.5-23.5T160-240v-120h80v120h480v-120h80v120q0 33-23.5 56.5T720-160H240Z"
+              />
+            </svg>
+            Download now
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </body>
+  <script>
+    let inputText = document.getElementById("inputText");
+    let img = document.getElementById("imgqr");
+    
+    
+    function generate() {
+      imgqr.src =
+        " https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" +
+        inputText.value;
+    }
+  </script>
+</html>
